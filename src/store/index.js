@@ -1,8 +1,10 @@
+import dotenv from 'dotenv-defaults'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import { getCookie, deleteCookie } from '../utils/cookies'
 
+dotenv.config()
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -13,7 +15,7 @@ export default new Vuex.Store({
       // Must include credentials in request
       // to allow cross origin response to set cookies
       withCredentials: true,
-      baseURL: 'http://localhost:3030/',
+      baseURL: process.env.API_ORIGIN || 'http://localhost:3030/',
       timeout: 5000,
       headers: {
         common: { Authorization: getCookie('Auth-Payload') }
