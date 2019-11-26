@@ -6,8 +6,8 @@ import { getCookie, deleteCookie } from '../utils/cookies'
 
 dotenv.config()
 Vue.use(Vuex)
-const baseURL =
-  process.env.API_ORIGIN || 'https://oauth-examples-api.herokuapp.com/'
+const baseURL = 'https://oauth-examples-api.herokuapp.com/'
+// const baseURL = 'http://localhost:3030/'
 
 export default new Vuex.Store({
   state: {
