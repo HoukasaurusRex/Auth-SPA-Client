@@ -3,7 +3,12 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/tests">Tests</router-link> |
-      <router-link to="/secret-route">Secret Route</router-link>
+      <router-link to="/secret-route">Secret Route</router-link> |
+      <a
+        href="https://github.com/HoukasaurusRex/Node-SPA-Token-Authentication"
+        target="_blank"
+        >Github</a
+      >
     </div>
     <router-view />
   </div>
