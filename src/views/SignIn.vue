@@ -17,17 +17,6 @@ export default {
   components: {
     EmailAuth,
     OAuthButton
-  },
-  data() {
-    return {
-      jwtToken: this.$route.query.token || this.$store.getters.getJwtPayload
-    }
-  },
-  mounted() {
-    if (this.$route.query.token) {
-      this.$store.commit('setJwtPayload', this.jwtToken)
-      this.jwtToken = this.$route.query.token
-    }
   }
 }
 </script>

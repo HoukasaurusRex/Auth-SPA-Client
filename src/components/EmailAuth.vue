@@ -2,9 +2,19 @@
   <div>
     <form class="form">
       <label for="email">Email</label>
-      <input type="email" v-model="email" placeholder="me@example.com" />
+      <input
+        name="email"
+        type="email"
+        v-model="email"
+        placeholder="me@example.com"
+      />
       <label for="password">Password</label>
-      <input type="password" v-model="password" placeholder="Password123" />
+      <input
+        name="password"
+        type="password"
+        v-model="password"
+        placeholder="Password123"
+      />
       <button
         type="submit"
         @click="authEmail"

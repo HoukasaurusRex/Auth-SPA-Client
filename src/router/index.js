@@ -20,6 +20,12 @@ const routes = [
     component: SignIn
   },
   {
+    path: '/tests',
+    name: 'Tests',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Tests.vue')
+  },
+  {
     path: '/secret-route',
     name: 'secret-route',
     beforeEnter: isAuthenticated,

@@ -6,13 +6,13 @@ import { getCookie, deleteCookie } from '../utils/cookies'
 
 dotenv.config()
 Vue.use(Vuex)
-const baseURL = 'https://oauth-examples-api.herokuapp.com/'
-// const baseURL = 'http://localhost:3030/'
+// const baseURL = 'https://oauth-examples-api.herokuapp.com/'
+const baseURL = process.env.VUE_APP_API_ORIGIN
 
 export default new Vuex.Store({
   state: {
     baseURL,
-    authPayload: getCookie('Auth-Payload'),
+    authPayload: getCookie('auth.payload'),
     service: axios.create({
       // Must include credentials in request
       // to allow cross origin response to set cookies
@@ -20,7 +20,7 @@ export default new Vuex.Store({
       baseURL,
       timeout: 5000,
       headers: {
-        common: { Authorization: getCookie('Auth-Payload') }
+        common: { Authorization: getCookie('auth.payload') }
       }
     }),
     status: ''
@@ -36,12 +36,12 @@ export default new Vuex.Store({
     },
     AUTH_SUCCESS: state => {
       state.status = 'success'
-      state.authPayload = getCookie('Auth-Payload')
+      state.authPayload = getCookie('auth.payload')
       state.service.defaults.headers.common['Authorization'] = state.authPayload
     },
     AUTH_ERROR: state => {
       state.status = 'error'
-      deleteCookie('Auth-Payload')
+      deleteCookie('auth.payload')
     }
   },
   actions: {
@@ -60,7 +60,7 @@ export default new Vuex.Store({
     },
     AUTH_LOGOUT: ({ commit, dispatch }) => {
       commit('AUTH_LOADING')
-      deleteCookie('Auth-Payload')
+      deleteCookie('auth.payload')
       commit('AUTH_SUCCESS')
       return 'logged out'
     },
@@ -74,6 +74,16 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error.message)
         commit('AUTH_ERROR', error)
+        return error
+      }
+    },
+    TEST_ROUTE: async ({ commit, state }, options) => {
+      try {
+        const res = await state.service.post(options.url, options.payload)
+        const { data } = res
+        return data
+      } catch (error) {
+        console.error(error.message)
         return error
       }
     }
