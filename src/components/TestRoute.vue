@@ -16,7 +16,37 @@
         </div>
         <div>
           <label for="sameSite">Same Site</label>
-          <input name="sameSite" type="checkbox" v-model="sameSite" />
+          <div class="group v-center">
+            <label for="strict">Strict: </label>
+            <input
+              id="strict"
+              name="sameSite"
+              type="radio"
+              v-model="sameSite"
+              value="Strict"
+            />
+          </div>
+          <div class="group v-center">
+            <label for="strict">Lax</label>
+            <input
+              id="lax"
+              name="sameSite"
+              type="radio"
+              v-model="sameSite"
+              value="Lax"
+            />
+          </div>
+          <div class="group v-center">
+            <label for="none">None</label>
+            <input
+              id="none"
+              name="sameSite"
+              type="radio"
+              v-model="sameSite"
+              value=""
+            />
+            <!-- implement when supported: https://github.com/expressjs/session/issues/696 -->
+          </div>
         </div>
         <div>
           <label for="secure">Secure</label>
@@ -45,7 +75,7 @@ export default {
       loading: false,
       origin: process.env.VUE_APP_API_ORIGIN,
       domain: window.location.host,
-      maxAge: 0,
+      maxAge: undefined,
       httpOnly: false,
       sameSite: false,
       secure: false,
@@ -112,6 +142,10 @@ export default {
     padding: 0.5rem;
     margin: 1rem auto;
     border-bottom: 1px solid #666;
+    &[type='radio'] {
+      min-width: 15px;
+      margin-left: 5px;
+    }
   }
 
   button {
@@ -140,7 +174,10 @@ export default {
 
   .group {
     display: flex;
-    padding: 2rem 4rem;
+  }
+
+  .v-center {
+    align-items: center;
   }
 }
 </style>
