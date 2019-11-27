@@ -86,7 +86,7 @@ export default {
         payload: this.payload
       })
       this.loading = false
-      console.log({ res })
+      console.log(this.url, { res })
       return res
     }
   }
