@@ -1,12 +1,9 @@
-import dotenv from 'dotenv-defaults'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import { getCookie, deleteCookie } from '../utils/cookies'
 
-dotenv.config()
 Vue.use(Vuex)
-// const baseURL = 'https://oauth-examples-api.herokuapp.com/'
 const baseURL = process.env.VUE_APP_API_ORIGIN
 
 export default new Vuex.Store({
