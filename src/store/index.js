@@ -11,7 +11,7 @@ export default new Vuex.Store({
     baseURL,
     authPayload: getCookie('auth.payload'),
     service: axios.create({
-      // Must include credentials in request
+      // Must include credentials in request¡
       // to allow cross origin response to set cookies
       withCredentials: true,
       baseURL,
