@@ -14,7 +14,7 @@ const isAuthenticated = (to, from, next) => {
 }
 
 const meta = {
-  title: 'Auth Examples | JT Houk',
+  title: 'Auth SPA | JT Houk',
   metaTags: [
     {
       name: 'description',
