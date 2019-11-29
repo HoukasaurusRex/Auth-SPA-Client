@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     href() {
-      return this.$store.baseURL + this.path
+      return this.$store.getters.baseURL + this.path
     }
   },
   methods: {

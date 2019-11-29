@@ -25,7 +25,8 @@ export default new Vuex.Store({
   getters: {
     getAuthPayload: state => state.authPayload,
     isAuthenticated: state => !!state.authPayload,
-    getStatus: state => state.status
+    getStatus: state => state.status,
+    baseURL: state => state.baseURL
   },
   mutations: {
     AUTH_LOADING: state => {
